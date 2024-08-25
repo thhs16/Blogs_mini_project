@@ -11,10 +11,8 @@
     <!-- DB connection -->
     <?php 
         require_once('../db/00_db_connection.php');
-        
-        $sql = "select * from category ";
-        $res = $pdo->prepare($sql);
-        $res->execute();
+
+        require_once('../db/all_category_data.php');
 
         $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
@@ -27,10 +25,17 @@
     <!-- Design Start -->
         <div class="container mt-5">
             <div class="row">
+                <div class="col-2 offset-5 text-center">
+                    <?php 
+                        require_once('../source/nav.php');
+                    ?>
+                </div>
+            </div>
+            <div class="row">
 
                 <div class="col-4 p-5">
 
-                    <form action="./PHP_category_data.php" method="POST">
+                    <form action="./create_category.php" method="POST">
 
                         <div class="">
                             <input type="text" name="category" class="form-control" placeholder="Category Name...">
