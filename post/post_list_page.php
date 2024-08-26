@@ -21,8 +21,8 @@
 
         $jointData = $res_joint->fetchAll(PDO::FETCH_ASSOC);
 
-        echo '<pre>';
-        print_r($jointData);
+        // echo '<pre>';
+        // print_r($jointData);
     ?>
 
 
@@ -67,17 +67,44 @@
                         </div>
                         <div class="mt-3">
                             <input type="submit" name="btn_create" value="Create" class="btn btn-primary">
-                            <input type="reset" value="Reset" class="btn btn-dark">
+                            <input type="reset" value="Reset" class="btn btn-danger">
                         </div>
                     </form>
                     
                 </div>
 
                 <div class="col">
-                    
+                    <div class="row mt-5">
+
+                            <?php
+                                foreach($jointData as $item){
+                                    
+                                    echo '<div class="col-4 mt-3">
+                                            <div class="card">
+                                                <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
+                                                    <img src="../image/'.$item['image'].'" class="img-fluid" style="height : 200px" />
+                                                    <a href="#!">
+                                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                                    </a>
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">'.$item['title'].'</h5>
+                                                    <p class="card-text">'.mb_strimwidth($item['description'],0,50,'...').'</p>
+                                                    <p class="card-text text-danger">'.$item['category_name'].'</p>
+                                                    <a href="#!" class="btn btn-dark" data-mdb-ripple-init>More Details</a>
+                                                    <a href="./post_delete.php?id='.$item['id'].'" class="btn btn-danger" data-mdb-ripple-init><i class="fa-solid fa-trash"></i></a>
+                                                    <a href="#!" class="btn btn-danger" data-mdb-ripple-init><i class="fa-solid fa-pen-to-square"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>';
+                                }
+                            ?>
+                    </div>
                 </div>
+                    
             </div>
-        </div>
+            
+    </div>
     <!-- Design End -->
 </body>
     <!-- MDB JS link -->
