@@ -82,7 +82,7 @@
                                     echo '<div class="col-4 mt-3">
                                             <div class="card">
                                                 <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
-                                                    <img src="../image/'.$item['image'].'" class="img-fluid" style="height : 200px" />
+                                                    <img src="../image/'.$item['image'].'" class="img-fluid" style="height : 150px" />
                                                     <a href="#!">
                                                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                                                     </a>
@@ -91,9 +91,16 @@
                                                     <h5 class="card-title">'.$item['title'].'</h5>
                                                     <p class="card-text">'.mb_strimwidth($item['description'],0,50,'...').'</p>
                                                     <p class="card-text text-danger">'.$item['category_name'].'</p>
-                                                    <a href="#!" class="btn btn-dark" data-mdb-ripple-init>More Details</a>
-                                                    <a href="./post_delete.php?id='.$item['id'].'" class="btn btn-danger" data-mdb-ripple-init><i class="fa-solid fa-trash"></i></a>
-                                                    <a href="#!" class="btn btn-danger" data-mdb-ripple-init><i class="fa-solid fa-pen-to-square"></i></a>
+
+                                                    <div class="d-flex justify-content-between align-items-center" style="height :40px;">
+                                                            <a href="./post_detail.php?id='.$item['id'].'" class="btn btn-dark" data-mdb-ripple-init>More Details</a>
+                                                        
+                                                            <a href="./post_update.php?id='.$item['id'].'" class="" data-mdb-ripple-init><i class="fa-solid fa-pen-to-square"></i></a> 
+
+                                                            <a href="./post_delete.php?id='.$item['id'].'" class="text-danger me-3" data-mdb-ripple-init><i class="fa-solid fa-trash"></i></a>
+                                                    
+                                                    </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>';
@@ -111,6 +118,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.umd.min.js" integrity="sha512-orRaGPJ0tGeCLCvCIFl91votpjee7YknHTJ3/gew4zzp0EhqkPwYc6DXABjX9rWjOzbFEPi3g5QRecU3whJvkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- font awesome inclusive js link -->
     <script src="https://kit.fontawesome.com/905758c01a.js" crossorigin="anonymous"></script>
-    <!-- img preview js -->
+
+    <!-- my img preview js -->
     <script src="../source/img_preview_post.js"></script> <!-- cuz of file path  -->
 </html>
+
+<!-- <div class="row">
+    <div class="col-4">
+        <a href="#!" class="btn btn-dark" data-mdb-ripple-init>More Details</a>
+    </div>
+    
+    <div class="col-4">
+        <a href="./post_delete.php?id='.$item['id'].'" class="btn btn-danger" data-mdb-ripple-init><i class="fa-solid fa-trash"></i></a>
+    </div>
+
+    <div class="col-4">
+        <a href="#!" class="btn btn-danger" data-mdb-ripple-init><i class="fa-solid fa-pen-to-square"></i></a>
+    </div>  
+</div> -->
+
+<!-- <div class="row">
+        <a href="#!" class="col-4 btn btn-dark" data-mdb-ripple-init>More Details</a>
+    
+        <a href="./post_delete.php?id='.$item['id'].'" class="col-4 btn btn-danger " data-mdb-ripple-init><i class="fa-solid fa-trash"></i></a>
+
+        <a href="#!" class="col-4 btn btn-danger" data-mdb-ripple-init><i class="fa-solid fa-pen-to-square"></i></a> 
+</div> -->
+
+<!-- <div class="row" style="height : 50px" >
+                                                            <a href="#!" class="btn btn-dark" data-mdb-ripple-init>More Details</a>
+                                                        
+                                                            <a href="./post_delete.php?id='.$item['id'].'" class="btn btn-danger " data-mdb-ripple-init><i class="fa-solid fa-trash"></i></a>
+
+                                                            <a href="#!" class="btn btn-danger" data-mdb-ripple-init><i class="fa-solid fa-pen-to-square"></i></a> 
+                                                    </div> -->
