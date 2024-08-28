@@ -44,8 +44,8 @@
 
                                 <?php
                                     foreach($category_data as $item){
-                                        echo '<select name="" class="form-control" value="'.$item['name'].'" >
-                                        <option value=""></option>
+                                        echo '<select name="" class="form-control" value="" >
+                                        <option value="">'.$item['name'].'</option>
                                     </select>';
                                     }
                                 ?>
