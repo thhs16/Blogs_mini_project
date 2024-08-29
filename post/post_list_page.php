@@ -83,7 +83,7 @@
                                             <div class="card">
                                                 <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
                                                     <img src="../image/'.$item['image'].'" class="img-fluid" style="height : 150px" />
-                                                    <a href="#!">
+                                                    <a href="./post_detail.php?id='.$item['id'].'">
                                                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                                                     </a>
                                                 </div>

@@ -1,6 +1,8 @@
 <?php
     require_once('../db/00_db_connection.php');
 
+    $category_Require_Status = false;
+
     if ( isset( $_POST['btn_create'] )){
 
         if( $_POST['category'] != ""){
@@ -12,6 +14,10 @@
             $res->execute([$category]); // Arr type
 
             // echo 'A new category is added to db';
+            $category_Require_Status = false;
+        } else {
+            $category_Require_Status = true;
         }
-        header('Location:./list_page.php');
+        // header('Location:./list_page.php');
+        // header("Refresh:1");
     }

@@ -12,7 +12,7 @@
     <?php 
         require_once('../db/00_db_connection.php');
 
-        require_once('../db/all_category_data.php');
+        require('../db/all_category_data.php');
 
         $data = $res->fetchAll(PDO::FETCH_ASSOC);
 
@@ -28,6 +28,10 @@
                 <div class="col-2 offset-5 text-center">
                     <?php 
                         require_once('../source/nav.php');
+                        require_once('./create_category.php');
+                        #second time db data
+                        require('../db/all_category_data.php');
+                        $data = $res->fetchAll(PDO::FETCH_ASSOC);
                     ?>
                 </div>
             </div>
@@ -35,10 +39,17 @@
 
                 <div class="col-4 p-5">
 
-                    <form action="./create_category.php" method="POST">
+                    <form action="" method="POST">
 
                         <div class="">
                             <input type="text" name="category" class="form-control" placeholder="Category Name...">
+
+                            <?php 
+                                if($category_Require_Status){
+                                    echo '<small class="text-danger ms-1">* Category Required</small>';
+                                }
+                            ?>
+
                         </div>
                         <div class="mt-3">
                             <input type="submit" name="btn_create" value="Create" class="btn btn-primary">
@@ -77,6 +88,8 @@
     <!-- Design End -->
     
     <!-- Used action attribute instead of require_once method -->
+    <!-- Now used require_once method for validation -->
+    <!-- The PHP file are above -->
 </body>
     <!-- MDB JS link -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.umd.min.js" integrity="sha512-orRaGPJ0tGeCLCvCIFl91votpjee7YknHTJ3/gew4zzp0EhqkPwYc6DXABjX9rWjOzbFEPi3g5QRecU3whJvkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

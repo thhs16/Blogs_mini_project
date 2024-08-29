@@ -22,6 +22,8 @@
         $category_data = $res_categoryName->fetchAll(PDO::FETCH_ASSOC);
 
         // echo '<pre>';
+        // print_r($id_joint_data);
+        // print_r($id_joint_data['description']);
         // print_r($category_data);
     ?>
 
@@ -33,22 +35,27 @@
                 </div>
                     <div class="row">
                         <div class="col-4">
-                            <img src="../image/download (6).jpg" class="img-thumbnail">
-                            <input type="file" name="image" id="" class="form-control">
+                            <img src="../image/<?php echo $id_joint_data['image']?>" id="output" class="img-thumbnail">
+                            <input type="file" name="image" onchange="loadfile(event)" class="form-control mt-2">
                         </div>
 
                         <div class="col">
                             <form action="">
-                                <input type="text"  class="form-control" value="<?php echo $id_joint_data['title'] ?>" >
-                                <textarea name=""  class="form-control" value="<?php echo $id_joint_data['description'] ?>" cols="30" rows="10"></textarea>
-
+                                <input type="text" name="" class="form-control" value="<?php echo $id_joint_data['title'] ?>" >
+                                <textarea name=""  class="form-control mt-3" cols="30" rows="10"><?php echo $id_joint_data['description'] ?></textarea> 
+                                <!-- textarea tag does not support the value attribute -->
+                                <select name="" class="form-control mt-3" value="" >
                                 <?php
                                     foreach($category_data as $item){
-                                        echo '<select name="" class="form-control" value="" >
-                                        <option value="">'.$item['name'].'</option>
-                                    </select>';
+                                        switch($id_joint_data['category_name']){
+                                            case $item['name'] : echo '<option value="" selected>'.$item['name'].'</option>';break;
+                                            default : echo '<option value="">'.$item['name'].'</option>';
+                                        }
                                     }
                                 ?>
+                                </select>
+
+                                <input type="submit" class="btn btn-dark mt-3" value="Update">
                             </form>
                         </div>
                     </div>
@@ -61,6 +68,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.umd.min.js" integrity="sha512-orRaGPJ0tGeCLCvCIFl91votpjee7YknHTJ3/gew4zzp0EhqkPwYc6DXABjX9rWjOzbFEPi3g5QRecU3whJvkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- font awesome inclusive js link -->
     <script src="https://kit.fontawesome.com/905758c01a.js" crossorigin="anonymous"></script>
+    <!-- my img preview js -->
+    <script src="../source/img_preview_post.js"></script> <!-- cuz of file path  -->
 
 </html>
     

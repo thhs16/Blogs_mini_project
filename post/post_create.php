@@ -9,8 +9,8 @@
     echo '<pre>';
     print_r($_FILES);
 
-    $imgNPost = ($_FILES['post_img']['name']);
-    $tmpNPost = ($_FILES['post_img']['tmp_name']);
+    $imgNPost = uniqid() . $_FILES['post_img']['name'];
+    $tmpNPost = $_FILES['post_img']['tmp_name'];
 
     $targetFile = '../image/' . $imgNPost; // like putting on a server
 

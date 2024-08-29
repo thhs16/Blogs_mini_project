@@ -4,7 +4,7 @@
         
         let reader = new FileReader();
 
-        console.log(reader);
+        // console.log(reader);
 
         reader.onload = function(){
             let output = document.getElementById('output');
