@@ -17,6 +17,9 @@
 
         require_once('../db/04_joining_two_tables.php');
 
+        // putting post data in DB from the form tag
+        require_once('./post_create.php');
+
         $allCateData = $res->fetchAll(PDO::FETCH_ASSOC);
 
         $jointData = $res_joint->fetchAll(PDO::FETCH_ASSOC);
@@ -40,30 +43,69 @@
 
                 <div class="col-4 p-5">
 
-                    <form action="./post_create.php" method="POST" enctype="multipart/form-data" >
+                <!-- form start -->
+                    <form action="" method="POST" enctype="multipart/form-data" >
 
+                    <!-- img preview -->
                         <div class="">
                             <img id="output" class="w-100" src="">
                         </div>
                         <div class="mt-2">
                             <input type="file" name="post_img" class="form-control" onchange="loadfile(event)">
+                            
+                            <?php 
+                                if( isset( $_POST['btn_create'] )){
+                                    if($error['ImgRequireStatus']){
+                                        echo '<small class="text-danger">*Image Required</small>' ;
+                                    }
+                                }
+                            ?>
                         </div>
+                    <!-- title input tag -->
                         <div class="mt-2">
-                            <input type="text" name="post_title" class="form-control" placeholder="Enter Title...">
+                            <input type="text" name="post_title" class="form-control" value="<?php  echo $_POST['post_title'] ?? "";    ?>" placeholder="Enter Title...">
+                            
+                            <?php 
+                                if( isset( $_POST['btn_create'] )){
+                                    if($error['titleRequireStatus']){
+                                        echo '<small class="text-danger">*Title Required</small>' ;
+                                    }
+                                }
+                            ?>
                         </div>
+                    <!-- description input tag -->
                         <div class="mt-2">
-                            <textarea name="post_description" class="form-control" placeholder="Enter Description..." cols="30" rows="10"></textarea>
+                            <textarea name="post_description" class="form-control" placeholder="Enter Description..." cols="30" rows="10"><?php  echo $_POST['post_description'] ?? "";    ?></textarea>
+
+                            <?php 
+                                if( isset( $_POST['btn_create'] )){
+                                    if($error['descriptionRequireStatus']){
+                                        echo '<small class="text-danger">*Description Required</small>' ;
+                                    }
+                                }
+                            ?>
                         </div>
+                    <!-- category select tag -->
                         <div class="mt-2">
-                            <select name="category" class="form-control">
-                                
+                            <select name="post_category" class="form-control">
+
+                            <option value="">Category Name ...</option>;
+                            
                                 <?php 
                                     foreach($allCateData as $item){
-                                        echo $item;
-                                        echo '<option value="'.$item['id'].'">'.$item['name'].'</option>';
+                                        // echo $item;
+                                        // why isset category
+                                        echo '<option value="'.$item['id'].' " '. ( isset($_POST['post_category']) && $_POST['post_category'] == $item['id'] ? 'selected' : '' ).' > '.$item['name'].'</option>';
                                     }
                                 ?>
                             </select>
+                            <?php 
+                                if( isset( $_POST['btn_create'] )){
+                                    if($error['categoryRequireStatus']){
+                                        echo '<small class="text-danger">*Category Required</small>' ;
+                                    }
+                                }
+                            ?>
                         </div>
                         <div class="mt-3">
                             <input type="submit" name="btn_create" value="Create" class="btn btn-primary">
