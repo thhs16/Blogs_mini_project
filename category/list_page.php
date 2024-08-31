@@ -14,7 +14,7 @@
 
         require('../db/all_category_data.php');
 
-        $data = $res->fetchAll(PDO::FETCH_ASSOC);
+        $data = $res_all_category->fetchAll(PDO::FETCH_ASSOC);
 
         // echo '<pre>';
         // print_r($data);
@@ -31,7 +31,7 @@
                         require_once('./create_category.php');
                         #second time db data
                         require('../db/all_category_data.php');
-                        $data = $res->fetchAll(PDO::FETCH_ASSOC);
+                        $data = $res_all_category->fetchAll(PDO::FETCH_ASSOC);
                     ?>
                 </div>
             </div>

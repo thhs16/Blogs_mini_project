@@ -20,7 +20,7 @@
         // putting post data in DB from the form tag
         require_once('./post_create.php');
 
-        $allCateData = $res->fetchAll(PDO::FETCH_ASSOC);
+        $allCateData = $res_all_category->fetchAll(PDO::FETCH_ASSOC);
 
         $jointData = $res_joint->fetchAll(PDO::FETCH_ASSOC);
 

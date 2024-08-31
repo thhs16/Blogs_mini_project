@@ -15,7 +15,7 @@
 
         require_once('../db/05_id_joining_two_tables.php');
 
-        require_once('../db/06_category_name.php');
+        require_once('../db/all_category_data.php');
 
         if( isset($_POST['btn_update']) ){
             require_once('./post_update.php');
@@ -23,7 +23,7 @@
 
         $id_joint_data = $res_joint->fetch(PDO::FETCH_ASSOC);
 
-        $category_data = $res_categoryName->fetchAll(PDO::FETCH_ASSOC);
+        $category_data = $res_all_category->fetchAll(PDO::FETCH_ASSOC);
 
         // echo '<pre>';
         // print_r($id_joint_data);
@@ -42,13 +42,20 @@
                     <form action="" method="POST" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-4">
+                                <!-- id -->
+                                <input type="hidden" name="post_update_id" value="<?php echo $id_joint_data['id']; ?>">
+
+                                <!-- image name from db -->
+                                <input type="hidden" name="db_old_img" value="<?php echo $id_joint_data['image']; ?>">
+
+                                
                                 <img src="../image/<?php echo $id_joint_data['image']?>" id="output" class="img-thumbnail">
                                 <input type="file" name="update_image" onchange="loadfile(event)" class="form-control mt-2">
                             </div>
 
                             <div class="col-8">
                                     <!-- title update -->
-                                    <input type="text" name="update_title" class="form-control" value="<?php echo $id_joint_data['title'] ?>" >
+                                    <input type="text" name="update_title" class="form-control" value="<?php echo $_POST['update_title'] ?? $id_joint_data['title']; ?>" >
                                         <?php 
                                            if( isset( $_POST['btn_update'] )){
                                             if($error['titleRequireStatus']){
@@ -58,7 +65,7 @@
                                         ?>
 
                                     <!-- description update -->
-                                    <textarea name="update_description"  class="form-control mt-3" cols="30" rows="10"><?php echo $id_joint_data['description'] ?></textarea> 
+                                    <textarea name="update_description"  class="form-control mt-3" cols="30" rows="10"><?php echo $_POST['update_description'] ?? $id_joint_data['description']; ?></textarea> 
                                     <!-- textarea tag does not support the value attribute -->
                                         <?php 
                                             if( isset( $_POST['btn_update'] )){
@@ -69,12 +76,12 @@
                                             ?>
                                     <!-- category update -->
                                     <select name="update_category" class="form-control mt-3" value="" >
-                                    <option value="" selected>Choose Category...</option>
                                     <?php
                                         foreach($category_data as $item){
+                                         
                                             switch($id_joint_data['category_name']){
-                                                case $item['name'] : echo '<option value="     '.$item['id'].'    " selected>'.$item['name'].'</option>';break;
-                                                default : echo '<option value="     '.$item['id'].'    ">'.$item['name'].'</option>';
+                                                case $item['name'] : echo '<option value="'.$item['id'].'" selected>'.$item['name'].'</option>';break;
+                                                default : echo '<option value="'.$item['id'].'">'.$item['name'].'</option>';
                                             }
                                         }
                                     ?>
@@ -82,7 +89,7 @@
                                         <?php 
                                             if( isset( $_POST['btn_update'] )){
                                                 if($error['categoryRequireStatus']){
-                                                    echo '<small class="text-danger">*Category Required</small>' ;
+                                                    echo '<small class="text-danger">*Category Required</small><br>' ;
                                                 }
                                             }
                                             ?>

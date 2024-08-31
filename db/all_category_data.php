@@ -1,5 +1,5 @@
 <?php
 
     $sql = "select * from category";
-    $res = $pdo->prepare($sql);
-    $res->execute([]);
+    $res_all_category = $pdo->prepare($sql);
+    $res_all_category->execute([]);
