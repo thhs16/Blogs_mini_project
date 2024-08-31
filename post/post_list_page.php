@@ -137,7 +137,7 @@
                                                     <div class="d-flex justify-content-between align-items-center" style="height :40px;">
                                                             <a href="./post_detail.php?id='.$item['id'].'" class="btn btn-dark" data-mdb-ripple-init>More Details</a>
                                                         
-                                                            <a href="./post_update.php?id='.$item['id'].'" class="" data-mdb-ripple-init><i class="fa-solid fa-pen-to-square"></i></a> 
+                                                            <a href="./post_update_page.php?id='.$item['id'].'" class="" data-mdb-ripple-init><i class="fa-solid fa-pen-to-square"></i></a> 
 
                                                             <a href="./post_delete.php?id='.$item['id'].'" class="text-danger me-3" data-mdb-ripple-init><i class="fa-solid fa-trash"></i></a>
                                                     
