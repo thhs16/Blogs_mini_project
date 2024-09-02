@@ -12,9 +12,15 @@
     <?php 
         require_once('../db/00_db_connection.php');
 
-        require('../db/all_category_data.php');
+        require_once('../db/all_category_data.php');
 
         $data = $res_all_category->fetchAll(PDO::FETCH_ASSOC);
+
+        require_once('./create_category.php');
+        #second time db data 
+        # use header('Location:./list_page.php'); to reload once
+        // require('../db/all_category_data.php');
+        // $data = $res_all_category->fetchAll(PDO::FETCH_ASSOC);
 
         // echo '<pre>';
         // print_r($data);
@@ -28,10 +34,6 @@
                 <div class="col-2 offset-5 text-center">
                     <?php 
                         require_once('../source/nav.php');
-                        require_once('./create_category.php');
-                        #second time db data
-                        require('../db/all_category_data.php');
-                        $data = $res_all_category->fetchAll(PDO::FETCH_ASSOC);
                     ?>
                 </div>
             </div>

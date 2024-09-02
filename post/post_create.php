@@ -44,7 +44,7 @@
             $res = $pdo->prepare($sql);
             $res->execute([$titlePost , $descriptionPost , $imgNPost , $categoryIdPost]);
         
-            header('Location:./post_list_page.php');
+            header('Location:./post_list_page.php'); // reload post_list_page.php
         
             // $img_name = $_FILES[''];
 

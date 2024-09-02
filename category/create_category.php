@@ -18,6 +18,6 @@
         } else {
             $category_Require_Status = true;
         }
-        // header('Location:./list_page.php');
+        header('Location:./list_page.php');
         // header("Refresh:1");
     }

@@ -15,7 +15,7 @@
 
         require_once('../db/all_category_data.php');
 
-        require_once('../db/04_joining_two_tables.php');
+        require_once('../db/07_sorting_post.php');
 
         // putting post data in DB from the form tag
         require_once('./post_create.php');
@@ -25,7 +25,7 @@
         $jointData = $res_joint->fetchAll(PDO::FETCH_ASSOC);
 
         // echo '<pre>';
-        // print_r($jointData);
+        // print_r($allCateData);
     ?>
 
 
@@ -116,7 +116,18 @@
                 </div>
 
                 <div class="col">
-                    <div class="row mt-5">
+                    <!-- sorting bar -->
+                    <div class="mt-3">
+                                <a href="./post_list_page.php"><button class="me-3 mt-2 btn btn-secondary btn-rounded btn-sm" >All</button></a>
+                                <?php 
+                                    
+                                    foreach($allCateData as $item){
+                                        echo '<a href="./post_list_page.php?category='.$item['id'].'"><button class="me-3 mt-2 btn btn-secondary btn-rounded btn-sm" >'.$item['name'].'</button></a>';
+                                    }
+                                ?>
+                    </div>
+
+                    <div class="row mt-3">
 
                             <?php
                                 foreach($jointData as $item){
