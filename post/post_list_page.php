@@ -133,9 +133,10 @@
                                 foreach($jointData as $item){
                                     
                                     echo '<div class="col-4 mt-3">
-                                            <div class="card">
+                                    <!-- in real life, no body writes only one words in blogs -->
+                                            <div class="card" style="max-height:450px;">
                                                 <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
-                                                    <img src="../image/'.$item['image'].'" class="img-fluid" style="height : 150px" />
+                                                    <img src="../image/'.$item['image'].'" class="img-fluid" style="width: 100%; height: 15vw; object-fit: cover;" />
                                                     <a href="./post_detail.php?id='.$item['id'].'">
                                                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                                                     </a>
