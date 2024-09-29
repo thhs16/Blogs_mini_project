@@ -142,7 +142,7 @@
                                                     </a>
                                                 </div>
                                                 <div class="card-body">
-                                                    <h5 class="card-title">'.$item['title'].'</h5>
+                                                    <h5 class="card-title" style="height: 50px;">'.mb_strimwidth($item['title'],0,30,'...').'</h5>
                                                     <p class="card-text">'.mb_strimwidth($item['description'],0,50,'...').'</p>
                                                     <p class="card-text text-danger">'.$item['category_name'].'</p>
 
